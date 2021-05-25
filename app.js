@@ -1,9 +1,11 @@
+// grab existing HTML elements
 const modal = document.getElementById("modal");
 const modalOpenButton = document.getElementById("add-button");
 const modalCloseButton = document.getElementById("close");
 const submitButton = document.getElementById("submit-button");
-const noteInput = document.querySelector(".input");
 const noteForm = document.getElementById("form");
+const noteInput = document.querySelector(".input");
+const notesContainer = document.getElementById('notes-container');
 
 loadEventListeners = () => {
    noteForm.addEventListener('submit', addNote);
@@ -32,6 +34,17 @@ addNote = (event) => {
       alert('You can\'t save an empty note.')
    }
 
+   const note = document.createElement('div');
+   note.className = 'note-object';
+   note.appendChild(document.createTextNode(noteInput.value));
+
+   notesContainer.appendChild(note);
+   
+   // clear notes field 
+   noteInput.value = '';
+   // close modal
+   modal.style.display = "none";
+   
    console.log(noteInput.value)
    // alert("Note added!")
 
