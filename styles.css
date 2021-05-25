@@ -94,8 +94,34 @@
 
 .note-object {
    /* display: inline-block; */
+   position: relative;
    margin: 10px;
    padding: 10px;
    background-color: #feff9c;
    border: 1px solid #f4f4f4;
+   height: 300px;
+   width: 300px;
+   overflow: hidden;
+}
+
+.delete-button {
+   display: block;
+   height: 25px;
+   width: 70px;
+   border: 1px solid #4d4944;
+   background-color: #feff9c;
+   position: absolute;
+   right: 75px;
+   bottom: 20px;
+}
+
+.edit-button {
+   display: block;
+   height: 25px;
+   width: 70px;
+   border: 1px solid #4d4944;
+   background-color: #feff9c;
+   position: absolute;
+   right: 150px;
+   bottom: 20px;
 }
