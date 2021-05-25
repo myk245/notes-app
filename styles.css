@@ -85,3 +85,17 @@
 #my-notes-title {
    font-size: 30px;
 }
+
+/* 6x6 grid layout */
+#notes-container {
+   display: grid; 
+   grid-template-columns: auto auto auto auto auto auto;
+}
+
+.note-object {
+   /* display: inline-block; */
+   margin: 10px;
+   padding: 10px;
+   background-color: #feff9c;
+   border: 1px solid #f4f4f4;
+}
