@@ -13,14 +13,29 @@
 </head>
 
 <body class="container">
-   <h1>Note-Taking App</h1>
-
-   <div class="toolbar">
-
+   <div id="header">
+      <p>Note-Taking App</p>
    </div>
 
-   <div class=" my-notes">
-      <p>My Notes</p>
+   <div id="add-note-section">
+      <button class="button" id="add-button">Add New Note</button>
+   </div>
+
+   <div id="modal"> 
+      <div id="modal-content">
+         <span id="close">&times;</span>
+         <form id="form">
+            <div>
+               <textarea name="note" class="input" maxlength=255></textarea>
+               <button class="button" id="submit-button">Submit Note</button>
+            </div>
+         </form>
+      </div>
+   </div>
+
+   <div id="my-notes">
+      <p id="my-notes-title">My Notes</p>
+      
    </div>
    
    <script type="text/javascript" src="app.js"></script>
