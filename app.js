@@ -9,6 +9,7 @@ const notesContainer = document.getElementById('notes-container');
 
 loadEventListeners = () => {
    noteForm.addEventListener('submit', addNote);
+   notesContainer.addEventListener('click', removeNote);
 }
 
 // Event Listeners
@@ -55,9 +56,16 @@ addNote = (event) => {
    // close modal
    modal.style.display = 'none';
    
-   console.log(noteInput.value)
-   // alert("Note added!")
+   alert("Note added!");
+}
 
+// event listener will be on the notes container
+removeNote = (event) => {
+   if (event.target.className === 'delete-button') {
+      if (confirm('Are you sure you want to delete this note?')) {
+         event.target.parentElement.remove();
+      }
+   }
 }
 
 loadEventListeners();
