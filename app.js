@@ -7,8 +7,10 @@ const noteForm = document.getElementById('form');
 const noteInput = document.querySelector('.input');
 const notesContainer = document.getElementById('notes-container');
 const editModal = document.getElementById('edit-modal');
+const editNoteForm = document.getElementById('edit-form');
 const editInput = document.querySelector('.edit-input');
 const editModalCloseButton = document.getElementById('edit-close');
+const editSubmitButton = document.getElementById('edit-submit-button');
 
 loadEventListeners = () => {
    noteForm.addEventListener('submit', addNote);
@@ -86,10 +88,21 @@ removeNote = (event) => {
 
 // opens the edit note modal with the note text
 editNote = (event) => {
+   const noteToEdit = event.target.parentElement.firstChild;
+   
    if (event.target.className === 'edit-button') {
       editModal.style.display = 'block';
-      // populate text area with note text
-      editInput.value = event.target.parentElement.firstChild.textContent;  
+      // populate text area with current note text
+      editInput.value = noteToEdit.textContent;
+
+      editSubmitButton.addEventListener('click', (event) => {
+         event.preventDefault();
+         
+         noteToEdit.textContent = editInput.value;
+
+         // hide edit modal 
+         editModal.style.display = 'none';
+      })
    }
 }
 
