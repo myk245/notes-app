@@ -30,33 +30,33 @@ window.addEventListener('click', (event) => {
 
 addNote = (event) => {
    event.preventDefault();
-
+   
    if (noteInput.value === '') {
       alert('You can\'t save an empty note.')
+   } else {
+      const note = document.createElement('div');
+      note.className = 'note-object';
+      note.appendChild(document.createTextNode(noteInput.value));
+
+      const deleteButton = document.createElement('button');
+      deleteButton.className = 'delete-button';
+      deleteButton.innerText = 'Delete';
+      note.appendChild(deleteButton);
+
+      const editButton = document.createElement('button');
+      editButton.className = 'edit-button';
+      editButton.innerText = 'Edit';
+      note.appendChild(editButton);
+
+      notesContainer.appendChild(note);
+
+      // clear notes field 
+      noteInput.value = '';
+      // close modal
+      modal.style.display = 'none';
+
+      alert("Note added!");
    }
-
-   const note = document.createElement('div');
-   note.className = 'note-object';
-   note.appendChild(document.createTextNode(noteInput.value));
-
-   const deleteButton = document.createElement('button');
-   deleteButton.className = 'delete-button';
-   deleteButton.innerText = 'Delete';
-   note.appendChild(deleteButton);
-
-   const editButton = document.createElement('button');
-   editButton.className = 'edit-button';
-   editButton.innerText = 'Edit';
-   note.appendChild(editButton);
-
-   notesContainer.appendChild(note);
-   
-   // clear notes field 
-   noteInput.value = '';
-   // close modal
-   modal.style.display = 'none';
-   
-   alert("Note added!");
 }
 
 // event listener will be on the notes container
