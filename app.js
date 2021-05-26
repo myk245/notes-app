@@ -67,6 +67,7 @@ addNote = (event) => {
       note.appendChild(editButton);
 
       notesContainer.appendChild(note);
+      note.addEventListener('click', selectNote);
 
       // clear notes field 
       noteInput.value = '';
@@ -103,6 +104,34 @@ editNote = (event) => {
          // hide edit modal 
          editModal.style.display = 'none';
       })
+   }
+}
+
+selectNote = (event) => {
+   console.log(event.target)
+}
+
+// credit to jfriend00's solution on Stack Overflow (https://stackoverflow.com/questions/10716986/swap-two-html-elements-and-preserve-event-listeners-on-them)
+swapNotes = (note1, note2) => {
+   // save the location of note2
+   let parent2 = note2.parentNode;
+   let next2 = note2.nextSibling;
+   // special case for note1 is the next sibling of note2
+   if (next2 === note1) {
+      // just put note1 before note2
+      parent2.insertBefore(note1, note2);
+   } else {
+      // insert note2 right before note1
+      note1.parentNode.insertBefore(note2, note1);
+
+      // now insert note1 where note2 was
+      if (next2) {
+         // if there was an element after obj2, then insert obj1 right before that
+         parent2.insertBefore(note1, next2);
+      } else {
+         // otherwise, just append as last child
+         parent2.appendChild(note1);
+      }
    }
 }
 
