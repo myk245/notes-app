@@ -6,10 +6,14 @@ const submitButton = document.getElementById('submit-button');
 const noteForm = document.getElementById('form');
 const noteInput = document.querySelector('.input');
 const notesContainer = document.getElementById('notes-container');
+const editModal = document.getElementById('edit-modal');
+const editInput = document.querySelector('.edit-input');
+const editModalCloseButton = document.getElementById('edit-close');
 
 loadEventListeners = () => {
    noteForm.addEventListener('submit', addNote);
    notesContainer.addEventListener('click', removeNote);
+   notesContainer.addEventListener('click', editNote);
 }
 
 // Event Listeners
@@ -26,11 +30,23 @@ window.addEventListener('click', (event) => {
    if (event.target == modal) {
       modal.style.display = 'none';
    }
-}) 
+})
+
+editModalCloseButton.addEventListener('click', () => {
+   editModal.style.display = 'none';
+})
+
+// if user clicks outside of edit modal, close it
+window.addEventListener('click', (event) => {
+   if (event.target == editModal) {
+      editModal.style.display = 'none';
+   }
+})
 
 addNote = (event) => {
    event.preventDefault();
-   
+
+   // prevent user from saving an empty note
    if (noteInput.value === '') {
       alert('You can\'t save an empty note.')
    } else {
@@ -65,6 +81,15 @@ removeNote = (event) => {
       if (confirm('Are you sure you want to delete this note?')) {
          event.target.parentElement.remove();
       }
+   }
+}
+
+// opens the edit note modal with the note text
+editNote = (event) => {
+   if (event.target.className === 'edit-button') {
+      editModal.style.display = 'block';
+      // populate text area with note text
+      editInput.value = event.target.parentElement.firstChild.textContent;  
    }
 }
 

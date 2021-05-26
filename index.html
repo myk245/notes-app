@@ -29,7 +29,20 @@
          <form id="form">
             <div>
                <textarea name="note" class="input" maxlength=255></textarea>
-               <button class="button" id="submit-button">Submit Note</button>
+               <button class="button" id="submit-button">Save Note</button>
+            </div>
+         </form>
+      </div>
+   </div>
+
+   <!-- modal to edit a note -->
+   <div id="edit-modal">
+      <div id="edit-modal-content">
+         <span id="edit-close">&times;</span>
+         <form id="edit-form">
+            <div>
+               <textarea name="note" class="edit-input" maxlength=255></textarea>
+               <button class="button" id="edit-submit-button">Save Note</button>
             </div>
          </form>
       </div>
